@@ -1,0 +1,153 @@
+{
+  "main": {
+    "id": "211518c8044c70ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "141d9a6e3acd0680",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "65f3c2a6f7ca5913",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "Aula8_ParadigmaLogico.pdf"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1dbc9e3f8e982be9",
+    "type": "split",
+    "children": [
+      {
+        "id": "25b41c08d8893a69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cab6a98a4fd358da",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "58c0f0c9f972e331",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9b801a3d59bcad5c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "19523a1cf5eb8b32",
+    "type": "split",
+    "children": [
+      {
+        "id": "02743bfd08e180db",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "09f51b12e82583bb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Aula8_ParadigmaLogico.pdf",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "53ebe6bddea9acb4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Aula8_ParadigmaLogico.pdf",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8b13c79ecd6a1e75",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "5d78695d2105897c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Aula8_ParadigmaLogico.pdf"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "65f3c2a6f7ca5913",
+  "lastOpenFiles": [
+    "Paradigma lógico.md",
+    "Aula8_ParadigmaLogico.pdf",
+    "Untitled.md"
+  ]
+}
