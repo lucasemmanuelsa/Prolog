@@ -1,3 +1,2 @@
-nome,email,senha
-João,joao@example.com,33312
-Maria,maria@example.com,333123
+João,joao@example.com,33312,"Fantasia; Terror"
+Maria,maria@example.com,333123,"Fantasia; Teste"
