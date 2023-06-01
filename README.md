@@ -1,2 +1,2 @@
 # Prolog
-Prolog Exercises
+Práticas na disciplina de Paradigmas de linguagens de programação na UFCG
