@@ -1,27 +1,65 @@
 :- use_module(library(csv)).
 
-ler_arquivo_csv(NomeArquivo) :-
+
+getUsers(Users) :- 
+ler_arquivo_csv('users.csv', DadosT), 
+len(DadosT, R),
+atualizaUsers(DadosT, R, 1, Users).
+
+getBooks(X) :- ler_arquivo_csv('books.csv', X).
+
+ler_arquivo_csv(NomeArquivo, Dados) :-
     open(NomeArquivo, read, Arquivo),
-    processar_linhas(Arquivo),
+    csv_read_file(NomeArquivo, Linhas, [separator(0';)]),
+    rows_to_lists(Linhas, Dados),
     close(Arquivo).
 
-processar_linhas(Stream) :-
-    repeat,
-    read_line_to_string(Stream, Linha),
-    (Linha = end_of_file -> true ; processar_linha(Linha), fail).
+row_to_list(Row, Data) :-
+    Row =.. [_|Data].
+    
+rows_to_lists([], []).
+rows_to_lists([Row|Rows], [Data|DataList]) :-
+    row_to_list(Row, Data),
+    rows_to_lists(Rows, DataList).
 
-processar_linha(Linha) :-
-    atomic_list_concat(Colunas, ';', Linha),
-    processar_colunas(Colunas).
+nth(1, [X|_], X).
+nth(N, [_|T], X) :-
+    N > 1,
+    N1 is N - 1,
+    nth(N1, T, X).
 
-processar_colunas(Colunas) :-
-    % Faça algo com os valores das colunas
-    pegar_elemento_por_indice(Colunas, 0, Elemento),
-    write(Elemento),
-    write(Colunas).
+atualizaUsers(Users, R, C, Users) :- C > R,!.
+atualizaUsers(Users, R, C, Retorno) :-
+nth(C, Users, Usuario),
+nth(4, Usuario, Genres),
+string_to_list(Genres, ListGenres),
+atualizar_posicao(3, ListGenres, Usuario, Usuarioatt),
+Index is C - 1,
+atualizar_posicao(Index, Usuarioatt, Users, Usersatt),
+C2 is C + 1,
+atualizaUsers(Usersatt, R, C2, Retorno).
 
-pegar_elemento_por_indice([Elemento|_], 0, Elemento).
-pegar_elemento_por_indice([_|Resto], Indice, Elemento) :-
-    Indice > 0,
-    NovoIndice is Indice - 1,
-    pegar_elemento_por_indice(Resto, NovoIndice, Elemento).
+main :-
+ler_arquivo_csv('users.csv', Users),
+nth(1, Users, Usuario),
+nth(4, Usuario, Genres),
+string_to_list(Genres, ListGenres),
+atualizar_posicao(3, ListGenres, Usuario, Usuarioatt),
+atualizar_posicao(0, Usuarioatt, Users, Usersatt),
+write(Usersatt).
+
+
+string_to_list(String, Lista) :-
+    atomic_list_concat(Substrings, ', ', String),
+    maplist(atom_string, Lista, Substrings).
+
+
+atualizar_posicao(_, _, [], []).
+atualizar_posicao(0, NovoElemento, [_|T], [NovoElemento|T]).
+atualizar_posicao(Posicao, NovoElemento, [H|T], [H|Resto]) :-
+    Posicao > 0,
+    NovaPosicao is Posicao - 1,
+    atualizar_posicao(NovaPosicao, NovoElemento, T, Resto).
+
+len([],0).
+len([_|T],R) :- len(T,R2), R is R2 + 1.
