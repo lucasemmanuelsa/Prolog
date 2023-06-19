@@ -1,2 +1,4 @@
-João;joao@example.com;33312;"Fantasia, Terror"
-Maria;maria@example.com;333123;"Fantasia, Teste"
+Lucas;Email;Password;[Fantasia,Teste];[Loans];[Favorites];[Historic]
+João;joao@example.com;33312;[Fantasia,Terror];[];[];[]
+Maria;maria@example.com;333123;[Fantasia,Teste];[];[];[]
+Pedro;pedro@gmailcom;444421;[Teste,Dois];[Loans];[Favorites];[Historic]

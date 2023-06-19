@@ -1,0 +1,1 @@
+incrementa(X,R) :- R is X + 1.

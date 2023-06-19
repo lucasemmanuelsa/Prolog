@@ -1,3 +1,4 @@
+:- module(leituraCsv, [getUsers/1, getBooks/1, ler_arquivo_csv/2, row_to_list/2, rows_to_lists/2,nth/3,atualizaUsers/4,atualizar_posicao/4]).
 :- use_module(library(csv)).
 
 
@@ -32,26 +33,33 @@ atualizaUsers(Users, R, C, Users) :- C > R,!.
 atualizaUsers(Users, R, C, Retorno) :-
 nth(C, Users, Usuario),
 nth(4, Usuario, Genres),
+nth(5, Usuario, Loans),
+nth(6, Usuario, Favorites),
+nth(7, Usuario, Historic),
 string_to_list(Genres, ListGenres),
-atualizar_posicao(3, ListGenres, Usuario, Usuarioatt),
+string_to_list(Loans, ListLoans),
+string_to_list(Favorites, ListFavorites),
+string_to_list(Historic, ListHistoric),
+atualizar_posicao(3, ListGenres, Usuario, Usuarioatt1),
+atualizar_posicao(4, ListLoans, Usuarioatt1, Usuarioatt2),
+atualizar_posicao(5, ListFavorites, Usuarioatt2, Usuarioatt3),
+atualizar_posicao(6, ListHistoric, Usuarioatt3, Usuarioatt4),
 Index is C - 1,
-atualizar_posicao(Index, Usuarioatt, Users, Usersatt),
+atualizar_posicao(Index, Usuarioatt4, Users, Usersatt),
 C2 is C + 1,
 atualizaUsers(Usersatt, R, C2, Retorno).
 
-main :-
-ler_arquivo_csv('users.csv', Users),
-nth(1, Users, Usuario),
-nth(4, Usuario, Genres),
-string_to_list(Genres, ListGenres),
-atualizar_posicao(3, ListGenres, Usuario, Usuarioatt),
-atualizar_posicao(0, Usuarioatt, Users, Usersatt),
-write(Usersatt).
 
+string_to_list('[]', []).
+string_to_list(String, Lista) :- %converte '[Fantasia, Terror]' para ['Fantasia', 'Terror'].
+    string_concat('[', Substring, String), 
+    string_concat(ElementosString, ']', Substring),
+    atomic_list_concat(Elementos, ', ', ElementosString),
+    maplist(atom_string, Lista, Elementos).
 
-string_to_list(String, Lista) :-
-    atomic_list_concat(Substrings, ', ', String),
-    maplist(atom_string, Lista, Substrings).
+%string_to_list(String, Lista) :- converte "Fantasia, Terror" para ['Fantasia', 'Terror'] caso seja necessário...
+    %atomic_list_concat(Substrings, ', ', String),
+    %maplist(atom_string, Lista, Substrings).
 
 
 atualizar_posicao(_, _, [], []).
